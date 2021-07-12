@@ -1,0 +1,32 @@
+﻿@page "/"
+@page "/products"
+
+@inject ISearchProductsUseCase searchProductsUseCase
+
+
+<SearchBarComp OnSearch="HandleFilter"/>
+
+
+@if (Products != null && Products.Count > 0)
+{
+    <div class="row">
+        @foreach (var product in Products)
+        {
+            <ProductItemComp Product="product" />
+        }
+    </div>
+}
+
+@code{
+    private List<Product> Products;
+
+    protected override void OnInitialized()
+    {
+        Products = searchProductsUseCase.Execute();
+    }
+
+    private void HandleFilter(string filter)
+    {
+        Products = searchProductsUseCase.Execute(filter);
+    }
+}

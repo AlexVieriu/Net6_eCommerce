@@ -1,0 +1,26 @@
+﻿<br />
+<div class="row g-3 align-items-center">
+    <div class="col-auto">
+        <label class="col-form-label">Search</label>
+    </div>
+    <div class="col-auto">
+        <input class="form-control" @onchange="Handlefilter">
+    </div>
+</div>
+<br />
+
+
+@code{
+    private string filter = "";
+
+    [Parameter]
+    public EventCallback<string> OnSearch { get; set; }
+
+    public void Handlefilter(ChangeEventArgs e)
+    {
+        filter = e.Value.ToString();
+
+        OnSearch.InvokeAsync(filter);
+    }
+
+}

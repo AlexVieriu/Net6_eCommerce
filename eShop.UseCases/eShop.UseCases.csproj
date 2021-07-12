@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="AdminPortal\" />
+    <Folder Include="CustomerPortal\OrderConfirmationScreen\" />
+    <Folder Include="CustomerPortal\PluginInterfaces\StateStore\" />
+    <Folder Include="CustomerPortal\ShoppingCartScreen\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eShop.CoreBusiness\eShop.CoreBusiness.csproj" />
+  </ItemGroup>
+
+</Project>
