@@ -8,7 +8,6 @@
     <Folder Include="AdminPortal\" />
     <Folder Include="CustomerPortal\OrderConfirmationScreen\" />
     <Folder Include="CustomerPortal\PluginInterfaces\StateStore\" />
-    <Folder Include="CustomerPortal\ShoppingCartScreen\" />
   </ItemGroup>
 
   <ItemGroup>

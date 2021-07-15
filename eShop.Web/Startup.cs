@@ -1,6 +1,10 @@
 using eShop.DataStore.HardCoded;
+using eShop.ShoppingCartLocalStorage;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
+using eShop.UseCases.CustomerPortal.PluginInterfaces.UI;
 using eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen;
+using eShop.UseCases.CustomerPortal.ShoppingCartScreen;
+using eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces;
 using eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,8 +32,11 @@ namespace eShop.Web
 
             services.AddSingleton<IProductRepository, ProductRepository>();
 
+            services.AddScoped<IShoppingCart, ShoppingCart>();
+
             services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
+            services.AddTransient<IAddProductUseCase, AddProductUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

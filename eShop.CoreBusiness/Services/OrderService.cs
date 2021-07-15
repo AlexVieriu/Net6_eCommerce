@@ -4,41 +4,48 @@ namespace eShop.CoreBusiness.Services
 {
     public class OrderService : IOrderService
     {
+
         public bool ValidateCreateOrder(Order order)
         {
-            // Order exist
-            if (order == null) return false;
+            // order is null
+            if (order == null)
+                return false;
 
-            // LineOrder exists, LineOrders.Count > 0
-            if (order.LineItems == null || order.LineItems.Count <= 0) return false;
+            // line item are null and <=0
+            if (order.LineItems == null || order.LineItems.Count <= 0)
+                return false;
 
-            // ProductId, Qty, Price from LineOrder must be > 0
+            // price, qty , productId < 0
             foreach (var item in order.LineItems)
             {
-                if (item.ProductId <= 0 ||
-                    item.Quantity <= 0 ||
-                    item.Price <= 0)
+                if (item.ProductId < 0 ||
+                    item.Quantity < 0 ||
+                    item.Price < 0)
                     return false;
             }
 
             // ValidateCustomerInformation()
             if (!ValidateCustomerInformation(order.CustomerName,
-                                            order.CustomerAddress,
-                                            order.CustomerCity,
-                                            order.CustomerStateProvince,
-                                            order.CustomerCountry))
+                                             order.CustomerAddress,
+                                             order.CustomerCity,
+                                             order.CustomerStateProvince,
+                                             order.CustomerCountry))
                 return false;
 
             return true;
         }
 
-        public bool ValidateCustomerInformation(string name, string address, string city, string province, string country)
+        public bool ValidateCustomerInformation(string name,
+                                                string address,
+                                                string city,
+                                                string stateprovince,
+                                                string country)
         {
-            if (!string.IsNullOrWhiteSpace(name) ||
-                !string.IsNullOrWhiteSpace(address) ||
-                !string.IsNullOrWhiteSpace(city) ||
-                !string.IsNullOrWhiteSpace(province) ||
-                !string.IsNullOrWhiteSpace(country))
+            if (string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(address) ||
+                string.IsNullOrWhiteSpace(city) ||
+                string.IsNullOrWhiteSpace(stateprovince) ||
+                string.IsNullOrWhiteSpace(country))
                 return false;
 
             return true;
@@ -46,41 +53,51 @@ namespace eShop.CoreBusiness.Services
 
         public bool ValidateProcessOrder(Order order)
         {
-            throw new System.NotImplementedException();
+            if (!order.DateProcessed.HasValue || string.IsNullOrWhiteSpace(order.AdminUser)) // ??
+                return false;
+
+            return true;
         }
 
         public bool ValidateUpdateOrder(Order order)
         {
-            // has Order
-            if (order == null) return false;
+            // order is null 
+            if (order == null)
+                return false;
 
-            // has OrderId
-            if (order.OrderId < 1) return false;
+            // order id <0
+            if (order.OrderId < 0)
+                return false;
 
-            // has LineItems, LineItems.Count >0 
-            if (order.LineItems == null || order.LineItems.Count <= 0) return false;
+            // line items is null  and <= 0
+            if (order.LineItems == null || order.LineItems.Count <= 0)
+                return false;
 
-            // has ProductId, Qty, Price > 0 for LineItems
+
+            // qty, producid, price<0
             foreach (var item in order.LineItems)
             {
-                if (item.Quantity <= 0 ||
-                    item.Price <= 0 ||
-                    item.ProductId <= 0)
+                if (item.ProductId < 0 ||
+                    item.Price < 0 ||
+                    item.Quantity < 0)
                     return false;
             }
 
-            // !DataProccesed.HasValue, DataProccesing.HasValue
-            if (!order.DateProcessed.HasValue || order.DateProcessing.HasValue) return false;
 
-            // UniqueId
-            if (string.IsNullOrWhiteSpace(order.UniqueId)) return false;
+            // proccessdate, processing date
+            if (!order.DateProcessing.HasValue || order.DateProcessed.HasValue)
+                return false;
 
-            // Validate Customer Information
+            // unique Id
+            if (string.IsNullOrWhiteSpace(order.UniqueId))
+                return false;
+
+            // VAlidateCustomerInformation
             if (!ValidateCustomerInformation(order.CustomerName,
-                                          order.CustomerAddress,
-                                          order.CustomerCity,
-                                          order.CustomerStateProvince,
-                                          order.CustomerCountry))
+                                              order.CustomerAddress,
+                                              order.CustomerCity,
+                                              order.CustomerStateProvince,
+                                              order.CustomerCountry))
                 return false;
 
             return true;

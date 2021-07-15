@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="54bmcid4.tmp~" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.JSInterop" Version="5.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
