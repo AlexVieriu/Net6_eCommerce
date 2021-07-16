@@ -10,7 +10,7 @@ namespace eShop.ShoppingCartLocalStorage
 {
     public class ShoppingCart : IShoppingCart
     {
-        private const string constShoppingCart = "eShop.ShoppingCart";
+        private const string cstrShoppingCart = "eShop.ShoppingCart";
 
         private readonly IJSRuntime _jSRuntime;
         private readonly IProductRepository _productRepo;
@@ -27,7 +27,7 @@ namespace eShop.ShoppingCartLocalStorage
             var order = await GetOrder();
 
             // AddProduct
-            order.AddProduct(product.ProductId, 1, product.Price);
+            order.AddProduct(product.ProductId, 1, product.Price, product); // Added product
 
             // SetOrder
             await SetOrder(order);
@@ -75,9 +75,9 @@ namespace eShop.ShoppingCartLocalStorage
             if (qty == 0)
                 await DeleteProductAsync(productId);
 
-            var item = order.LineItems.FirstOrDefault(x => x.ProductId== productId);
+            var item = order.LineItems.FirstOrDefault(x => x.ProductId == productId);
             if (item != null)
-                item.Quantity += qty;
+                item.Quantity = qty;
 
             await SetOrder(order);
 
@@ -87,14 +87,20 @@ namespace eShop.ShoppingCartLocalStorage
         private async Task<Order> GetOrder()
         {
             Order order;
-            var orderStr = await _jSRuntime.InvokeAsync<string>("localStorage.getItem", constShoppingCart);
-            if (string.IsNullOrWhiteSpace(orderStr))
+            var strOrder = await _jSRuntime.InvokeAsync<string>("localStorage.getItem", cstrShoppingCart);
+            if (!string.IsNullOrWhiteSpace(strOrder) && strOrder.ToLower() != "null")
+                order = JsonConvert.DeserializeObject<Order>(strOrder);
+            else
             {
                 order = new Order();
                 await SetOrder(order);
             }
-            else
-                order = JsonConvert.DeserializeObject<Order>(orderStr);
+
+            foreach (var item in order.LineItems)
+            {
+                if (item.Product == null)
+                    item.Product = _productRepo.GetProduct(item.ProductId);
+            }
 
             return order;
         }
@@ -102,7 +108,7 @@ namespace eShop.ShoppingCartLocalStorage
         private async Task SetOrder(Order order)
         {
             await _jSRuntime.InvokeVoidAsync("localStorage.setItem",
-                                             constShoppingCart,
+                                             cstrShoppingCart,
                                              JsonConvert.SerializeObject(order));
         }
     }

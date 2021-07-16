@@ -26,13 +26,14 @@ namespace eShop.CoreBusiness.Models
 
 
         // Add OrderLineItem
-        public void AddProduct(int productId, int qty, double price)
+        public void AddProduct(int productId, int qty, double price, Product product)
         {
             var item = LineItems.FirstOrDefault(x => x.ProductId == productId);
+
             if (qty > 0 && price > 0)
             {
                 if (item == null)
-                    LineItems.Add(new OrderLineItem() { ProductId = productId, Price = price, Quantity = qty });
+                    LineItems.Add(new OrderLineItem() { ProductId = productId, Price = price, Quantity = qty, Product = product });
                 else
                     item.Quantity += qty;
             }

@@ -1,0 +1,55 @@
+﻿@page "/cart"
+
+@inject IViewShoppingCartUseCase viewShoppingCartUseCase
+
+<h3>Shopping Cart</h3>
+<br />
+
+@if (Order != null && Order.LineItems != null && Order.LineItems.Count > 0)
+{
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                @foreach (var item in Order.LineItems)
+                {
+                    <LineItemComp LineItem="item"
+                                  OnDeleteProduct="HandleDeleteProduct"
+                                  OnUpdateProduct="HandleUpdateProduct" />
+                    <hr />
+                }
+            </div>
+        </div>
+
+        <div class="col">
+            @*<OrderSummaryComp />*@
+        </div>
+    </div>
+}
+else
+{
+    <p>There are no items in the shopping Cart</p>
+}
+
+@code{
+    private Order Order;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Order = await viewShoppingCartUseCase.ExecuteAsync();
+            StateHasChanged();
+        }
+    }
+
+    public void HandleDeleteProduct(Order order)
+    {
+        this.Order = order;
+    }
+
+    public void HandleUpdateProduct(Order order)
+    {
+        this.Order = order;
+    }
+
+}

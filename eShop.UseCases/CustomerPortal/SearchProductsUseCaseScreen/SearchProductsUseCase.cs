@@ -15,7 +15,9 @@ namespace eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen
 
         public List<Product> Execute(string filter = null)
         {
-            return _productRepository.GetProducts(filter);
+            var productList = _productRepository.GetProducts(filter);
+
+            return productList;
         }
     }
 

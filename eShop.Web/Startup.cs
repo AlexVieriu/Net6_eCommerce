@@ -37,6 +37,11 @@ namespace eShop.Web
             services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
             services.AddTransient<IAddProductUseCase, AddProductUseCase>();
+
+            services.AddTransient<IViewShoppingCartUseCase, ViewShoppingCartUseCase>();
+            services.AddTransient<IUpdateProductUseCase, UpdateProductUseCase>();
+            services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

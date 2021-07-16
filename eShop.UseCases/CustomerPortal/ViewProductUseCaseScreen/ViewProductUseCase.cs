@@ -14,7 +14,9 @@ namespace eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen
 
         public Product Execute(int productId)
         {
-            return _productRepository.GetProduct(productId);
+            var product= _productRepository.GetProduct(productId);
+
+            return product;
         }
     }
 }
