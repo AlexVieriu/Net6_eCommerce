@@ -2,7 +2,7 @@
 @*image, brand, name, price, addProductToCart(), BackToProducts()*@
 
 @inject IViewProductUseCase viewProductUseCase
-@inject IAddProductUseCase addProductUseCase
+@inject IAddProductToCartUseCase addProductToCartUseCase 
 
 <h4>Product Details</h4>
 <br />
@@ -18,7 +18,7 @@
             <p>Price: &nbsp; <span class="text-danger">@product.Price.ToString("c")</span></p>
             <p class="car-text">@product.Description</p>
         </div>
-        <a href="/" class="btn btn-primary" @onclick="AddProductToShoppingCart">Add To Cart</a>
+        <a href="/" class="btn btn-primary" @onclick="AddProductToCart">Add To Cart</a>
     </div>
     <br />
     <a href="/" class="btn btn-outline-secondary">Back To Products</a>
@@ -40,8 +40,8 @@ else
             product = viewProductUseCase.Execute(productId);
     }
 
-    public async Task AddProductToShoppingCart()
+    public void AddProductToCart()
     {
-        await addProductUseCase.ExecuteAsync(product);
+        addProductToCartUseCase.Execute(product);
     }
 }

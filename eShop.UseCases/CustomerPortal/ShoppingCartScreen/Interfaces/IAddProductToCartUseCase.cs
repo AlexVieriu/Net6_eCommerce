@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces
 {
-    public interface IUpdateProductUseCase
+    public interface IAddProductToCartUseCase
     {
-        Task<Order> ExecuteAsync(int productId, int qty);
+        void Execute(Product product);
     }
 }

@@ -5,18 +5,20 @@ using System.Threading.Tasks;
 
 namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen
 {
-    public class AddProductUseCase : IAddProductUseCase
+    public class UpdateQuantityUseCase : IUpdateQuantityUseCase
     {
         private readonly IShoppingCart _shoppingCart;
 
-        public AddProductUseCase(IShoppingCart shoppingCart)
+        public UpdateQuantityUseCase(IShoppingCart shoppingCart)
         {
             _shoppingCart = shoppingCart;
         }
 
-        public async Task ExecuteAsync(Product product)
+        public async Task<Order> ExecuteAsync(int productId, int qty)
         {
-            await _shoppingCart.AddProductAsync(product);
+            var order = await _shoppingCart.UpdateQuantityAsync(productId, qty);
+
+            return order;
         }
     }
 }

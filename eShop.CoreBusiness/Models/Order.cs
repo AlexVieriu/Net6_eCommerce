@@ -44,7 +44,7 @@ namespace eShop.CoreBusiness.Models
         {
             var item = LineItems.FirstOrDefault(x => x.ProductId == productId);
             if (item is null)
-                LineItems.Remove(item);
+                LineItems.Remove(item);                         
         }
     }
 }

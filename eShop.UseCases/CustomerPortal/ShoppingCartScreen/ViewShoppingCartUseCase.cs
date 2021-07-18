@@ -16,8 +16,7 @@ namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen
 
         public async Task<Order> ExecuteAsync()
         {
-            var order = await _shoppingCart.GetOrderAsync();
-            return order;
+            return await _shoppingCart.GetOrderAsync();            
         }
     }
 }
