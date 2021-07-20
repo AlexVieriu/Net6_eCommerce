@@ -1,5 +1,4 @@
 ﻿using eShop.CoreBusiness.Models;
-using System.Threading.Tasks;
 
 namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces
 {

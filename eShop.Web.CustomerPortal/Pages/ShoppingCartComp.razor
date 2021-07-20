@@ -2,33 +2,30 @@
 
 @inject IViewShoppingCartUseCase viewShoppingCartUseCase
 
-
-<h4>Shopping Cart</h4>
-<br>
-
-
+<h4 class="m-3">Shopping Cart</h4>
 
 @if (order != null && order.LineItems != null && order.LineItems.Count > 0)
 {
-    <div>
-        <div class="col">
+    <div class="row">
+        <div class="col-8">
             @foreach (var item in order.LineItems)
             {
-                <LineItemComp LineItem="item" />
+                <LineItemComp LineItem="item"
+                      OnQtyChange="HandleUpdateQty"
+                      OnDelete="HandleDeleteProduct" />
+                <br>
             }
         </div>
         <div class="col">
-            <OrderSumaryComp />
+            <OrderSummaryComp Order="order"/>
         </div>
     </div>
 }
 
 else
 {
-    <p>There is no LineItem to display</p>
+    <p>There are no products in the Shopping Cart</p>
 }
-
-
 
 @code {
     private Order order;
@@ -40,5 +37,15 @@ else
             order = await viewShoppingCartUseCase.ExecuteAsync();
             StateHasChanged();
         }
+    }
+
+    private void HandleUpdateQty(Order order)
+    {
+        this.order = order;
+    }
+
+    private void HandleDeleteProduct(Order order)
+    {
+        this.order = order;
     }
 }

@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="AdminPortal\" />
     <Folder Include="CustomerPortal\OrderConfirmationScreen\" />
-    <Folder Include="CustomerPortal\PluginInterfaces\StateStore\" />
   </ItemGroup>
 
   <ItemGroup>

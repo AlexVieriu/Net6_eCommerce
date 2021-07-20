@@ -1,6 +1,8 @@
 using eShop.DataStore.HardCoded;
-using eShop.ShoppingCartLocalStorage;
+using eShop.ShoppingCart.LocalStorage;
+using eShop.StateStore.DI;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
+using eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.UI;
 using eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen;
 using eShop.UseCases.CustomerPortal.ShoppingCartScreen;
@@ -30,15 +32,18 @@ namespace eShop.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddScoped<IShoppingCart, ShopingCartBase>();
+            services.AddScoped<IShoppingCartStateStore, StateStoreShoppingCart>();
 
-            services.AddScoped<IShoppingCart, ShoppingCart>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();            
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
             services.AddTransient<IAddProductToCartUseCase, AddProductToCartUseCase>();
             services.AddTransient<IViewShoppingCartUseCase, ViewShoppingCartUseCase>();
-           
+            services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
+            services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

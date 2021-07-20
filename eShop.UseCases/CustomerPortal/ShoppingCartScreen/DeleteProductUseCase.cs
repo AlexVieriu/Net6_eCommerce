@@ -16,7 +16,7 @@ namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen
 
         public async Task<Order> ExecuteAsync(int productId)
         {
-            var order = await _shoppingCart.DeleteProductAsync(productId);
+            var order = await _shoppingCart.DeleteProductFromCartAsync(productId);
 
             return order;
         }

@@ -1,0 +1,35 @@
+﻿@implements IDisposable
+
+@inject IShoppingCartStateStore stateStore
+
+
+<div>
+    <a class="navbar-brand" href="/cart">
+        Cart: &nbsp; @lineItemsCount
+    </a>
+</div>
+
+
+@code {
+    private int lineItemsCount = 0;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        stateStore.AddStateChangeListener(HandleStateLineCount);
+        lineItemsCount = await stateStore.GetItemsCount();
+        StateHasChanged();
+    }
+
+    private async void HandleStateLineCount()
+    {
+        lineItemsCount = await stateStore.GetItemsCount();  
+    }
+
+    public void Dispose()
+    {
+        stateStore.RemoveStateChangeListener(HandleStateLineCount);
+    }
+}
+
+
+

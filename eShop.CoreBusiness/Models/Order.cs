@@ -43,7 +43,7 @@ namespace eShop.CoreBusiness.Models
         public void RemoveProduct(int productId)
         {
             var item = LineItems.FirstOrDefault(x => x.ProductId == productId);
-            if (item is null)
+            if (item !=null)
                 LineItems.Remove(item);                         
         }
     }
