@@ -44,7 +44,7 @@ namespace eShop.ShoppingCart.LocalStorage
             return order;
         }
 
-        public async void EmptyCartAsync()
+        public async Task EmptyCartAsync()
         {
             await SetOrder(null);
         }

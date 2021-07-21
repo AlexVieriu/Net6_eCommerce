@@ -1,0 +1,52 @@
+﻿<EditForm Model="Customer" OnValidSubmit="HandleCustomerSubmited">
+    <DataAnnotationsValidator />
+    <span class="text-danger">
+        <ValidationSummary />
+    </span>
+
+    <div class="form-group">
+        <label class="h5">Name</label>
+        <InputText class="form-control" @bind-Value="Customer.CustomerName" /><br />
+    </div>
+
+    <div class="form-group">
+        <label class="h5">Address</label>
+        <InputText class="form-control" @bind-Value="Customer.CustomerAddress" /><br />
+    </div>
+
+    <div class="form-group">
+        <label class="h5">City</label>
+        <InputText class="form-control" @bind-Value="Customer.CustomerCity" /><br />
+    </div>
+
+    <div class="form-group">
+        <label class="h5">StateProvince</label>
+        <InputText class="form-control" @bind-Value="Customer.CustomerStateProvince" /><br />
+    </div>
+
+    <div class="form-group">
+        <label class="h5">Country</label>
+        <InputText class="form-control" @bind-Value="Customer.CustomerCountry" /><br /><br />
+    </div>
+
+    <input type="submit" class="btn-lg btn-primary" value="Place Order" @onclick="HandleCustomerSubmited"/>
+
+</EditForm>
+
+
+@code{
+    private CustomerViewModel Customer;
+
+    [Parameter]
+    public EventCallback<CustomerViewModel> OnCustomerSubmited { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Customer = new();
+    }
+
+    private async void HandleCustomerSubmited()
+    {
+        await OnCustomerSubmited.InvokeAsync(Customer);
+    }
+}

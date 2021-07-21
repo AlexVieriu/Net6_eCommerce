@@ -1,3 +1,4 @@
+using eShop.CoreBusiness.Services;
 using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
 using eShop.StateStore.DI;
@@ -36,6 +37,8 @@ namespace eShop.Web
             services.AddScoped<IShoppingCartStateStore, StateStoreShoppingCart>();
 
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();            
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
@@ -43,6 +46,7 @@ namespace eShop.Web
             services.AddTransient<IViewShoppingCartUseCase, ViewShoppingCartUseCase>();
             services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
             services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+            services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
 
         }
 

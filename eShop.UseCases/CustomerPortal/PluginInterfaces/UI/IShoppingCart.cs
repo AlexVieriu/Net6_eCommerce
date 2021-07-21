@@ -12,7 +12,7 @@ namespace eShop.UseCases.CustomerPortal.PluginInterfaces.UI
         Task<Order> DeleteProductFromCartAsync(int productId);
 
         // EmptyCartAsync
-        void EmptyCartAsync();
+        Task EmptyCartAsync();
 
         // GetOrderAsync
         Task<Order> GetOrderAsync();

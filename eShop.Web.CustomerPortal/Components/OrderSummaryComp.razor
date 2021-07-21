@@ -24,7 +24,11 @@
         </div>
 
     </div>
-    <a href="/placeholder" class="btn btn-primary">Place Order</a>
+    @if (isVisible)
+    {
+        <a href="/placeorder" class="btn btn-primary">Place Order</a>
+    }
+
 </div>
 
 
@@ -32,11 +36,15 @@
     private double totalPrice;
 
     [Parameter]
+    public bool isVisible { get; set; } = true;
+
+    [Parameter]
     public Order Order { get; set; }
 
     protected override void OnParametersSet()
     {
         totalPrice = 0;
+        
         Order.LineItems.ForEach(x => totalPrice += x.Price * x.Quantity);
     }
 

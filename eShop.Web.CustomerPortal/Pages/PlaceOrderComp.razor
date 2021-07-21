@@ -1,10 +1,56 @@
-﻿@page "/placeholder"
+﻿@page "/placeorder"
 
-<h5>Placeholder</h5>
+@inject NavigationManager navManager
+
+@inject IViewShoppingCartUseCase viewShoppingCartUseCase
+@inject IPlaceOrderUseCase placeOrderUseCase
+
+
+@if (order != null && order.LineItems != null && order.LineItems.Count > 0)
+{
+    <div class="row">
+        <div class="col">
+            <CustomerFormComp OnCustomerSubmited="HandleCustomerSubmited" />
+        </div>
+        <div class="col">
+            <OrderSummaryComp isVisible="false" Order="order" />
+        </div>
+    </div>
+}
+
+<br />
+<p>@orderPlaced</p>
 
 
 @code{
+    private Order order;
+    private string orderPlaced = null;
 
+    protected override async void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            order = await viewShoppingCartUseCase.ExecuteAsync();
+            StateHasChanged();
+        }
+    }
 
+    private async void HandleCustomerSubmited(CustomerViewModel customer)
+    {
+        var mapper = new AutoMapper.MapperConfiguration(cfg
+             => cfg.CreateMap<CustomerViewModel, Order>()).CreateMapper();
+        mapper.Map<CustomerViewModel, Order>(customer, order);
 
+        var uniqueId = await placeOrderUseCase.ExecuteAsync(order);
+
+        if (string.IsNullOrWhiteSpace(uniqueId))
+        {
+            // show error msg
+        }
+        else
+        {
+            //navManager.NavigateTo("/");
+            orderPlaced = "Order has been placed";
+        }
+    }
 }
