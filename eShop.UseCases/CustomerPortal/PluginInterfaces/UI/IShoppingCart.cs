@@ -5,22 +5,11 @@ namespace eShop.UseCases.CustomerPortal.PluginInterfaces.UI
 {
     public interface IShoppingCart
     {
-        // AddProductToCart
-        void AddProductToCartAsync(Product product);
-
-        // RemoveProductFromCartAsync
+        Task AddProductToCartAsync(Product product);
         Task<Order> DeleteProductFromCartAsync(int productId);
-
-        // EmptyCartAsync
         Task EmptyCartAsync();
-
-        // GetOrderAsync
         Task<Order> GetOrderAsync();
-
-        // UpdateOrderAsync
-        void UpdateOrderAsync(Order order);
-
-        // UpdateQuantityAsync
+        Task UpdateOrderAsync(Order order);
         Task<Order> UpdateQuantityAsync(int productId, int quantity);
 
     }

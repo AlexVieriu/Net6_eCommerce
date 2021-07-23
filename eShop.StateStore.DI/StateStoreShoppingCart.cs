@@ -1,5 +1,4 @@
-﻿using eShop.CoreBusiness.Models;
-using eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
+﻿using eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.UI;
 using System.Threading.Tasks;
 
@@ -16,8 +15,7 @@ namespace eShop.StateStore.DI
 
         public async Task<int> GetItemsCount()
         {
-            Order order;
-            order = await _shoppingCart.GetOrderAsync();
+            var order = await _shoppingCart.GetOrderAsync();
 
             if (order != null && order.LineItems != null && order.LineItems.Count > 0)
                 return order.LineItems.Count;

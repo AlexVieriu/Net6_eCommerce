@@ -1,0 +1,106 @@
+﻿@page "/confirmorder/{uniqueId}"
+
+@inject IViewOrderConfirmationUseCase viewOrderConfirmationUseCase
+
+<h4>Order Confirmation</h4>
+<br />
+<h6>Shipping Info</h6>
+<br />
+
+
+@if (order != null)
+{
+    <div class="row">
+        <div class="col col-lg-8">
+            <table class="table table-borderless">
+                <tr>
+                    <th>Name</th>
+                    <td>@order.CustomerName</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>@order.CustomerAddress</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>@order.CustomerCity</td>
+                </tr>
+                <tr>
+                    <th>StateProvince</th>
+                    <td>@order.CustomerStateProvince</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>@order.CustomerCountry</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col">
+            <OrderSummaryComp Order="order" />
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (order.LineItems != null && order.LineItems.Count > 0)
+            {
+                @foreach (var item in order.LineItems)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("c")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>No items to display</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+
+@code{
+    private Order order;
+
+    [Parameter]
+    public string UniqueId { get; set; }
+
+    ////Dapper
+    //protected override void OnInitialized()
+    //{
+    //    if (string.IsNullOrWhiteSpace(UniqueId))
+    //        order = viewOrderConfirmationUseCase.Execute(UniqueId);
+    //}
+
+    // LocalStorage
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            if (!string.IsNullOrWhiteSpace(UniqueId))
+            {
+                order = viewOrderConfirmationUseCase.Execute(UniqueId);
+                StateHasChanged();
+            }
+    }
+}
+

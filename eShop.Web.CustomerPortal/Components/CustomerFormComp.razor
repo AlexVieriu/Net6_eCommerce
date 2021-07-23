@@ -45,8 +45,8 @@
         Customer = new();
     }
 
-    private async void HandleCustomerSubmited()
+    private void HandleCustomerSubmited()
     {
-        await OnCustomerSubmited.InvokeAsync(Customer);
+        OnCustomerSubmited.InvokeAsync(Customer);
     }
 }

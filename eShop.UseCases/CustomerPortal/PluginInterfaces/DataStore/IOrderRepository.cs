@@ -1,5 +1,6 @@
 ﻿using eShop.CoreBusiness.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore
 {

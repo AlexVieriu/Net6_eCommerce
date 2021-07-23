@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.4.21253.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
 </Project>

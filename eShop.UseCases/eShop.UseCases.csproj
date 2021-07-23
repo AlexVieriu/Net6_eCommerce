@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AdminPortal\" />
-    <Folder Include="CustomerPortal\OrderConfirmationScreen\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\eShop.CoreBusiness\eShop.CoreBusiness.csproj" />
   </ItemGroup>
 

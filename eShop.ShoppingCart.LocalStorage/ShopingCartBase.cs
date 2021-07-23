@@ -9,7 +9,7 @@ namespace eShop.ShoppingCart.LocalStorage
 {
     public class ShopingCartBase : IShoppingCart
     {
-        private const string _constShoppingCart = "eShop.LocalStorage";
+        private const string _constShoppingCart = "eShop.ShoppingCart";
 
         private readonly IJSRuntime _jSRuntime;
 
@@ -18,7 +18,7 @@ namespace eShop.ShoppingCart.LocalStorage
             _jSRuntime = jSRuntime;
         }
 
-        public async void AddProductToCartAsync(Product product)
+        public async Task AddProductToCartAsync(Product product)
         {
             // GetOrder
             var order = await GetOrder();
@@ -28,6 +28,8 @@ namespace eShop.ShoppingCart.LocalStorage
 
             // SetOrder
             await SetOrder(order);
+
+            return;
         }
 
         public async Task<Order> DeleteProductFromCartAsync(int productId)
@@ -44,17 +46,18 @@ namespace eShop.ShoppingCart.LocalStorage
             return order;
         }
 
-        public async Task EmptyCartAsync()
+        public Task EmptyCartAsync()
         {
-            await SetOrder(null);
+            return SetOrder(null);
         }
 
         public async Task<Order> GetOrderAsync()
         {
-            return await GetOrder();
+            var order=  await GetOrder();
+            return order;
         }
 
-        public async void UpdateOrderAsync(Order order)
+        public async Task UpdateOrderAsync(Order order)
         {
             await SetOrder(order);
         }
@@ -86,7 +89,7 @@ namespace eShop.ShoppingCart.LocalStorage
         {
             Order order;
             var strOrder = await _jSRuntime.InvokeAsync<string>("localStorage.getItem", _constShoppingCart);
-            if (strOrder == null)
+            if (string.IsNullOrWhiteSpace(strOrder) || strOrder == "null")
             {
                 order = new();
                 await SetOrder(order);

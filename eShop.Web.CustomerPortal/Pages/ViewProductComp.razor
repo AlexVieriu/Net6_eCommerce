@@ -39,6 +39,7 @@ else
 
     protected override void OnInitialized()
     {
+        product = new();
         if (productId > 0)
             product = viewProductUseCase.Execute(productId);
     }

@@ -2,6 +2,7 @@ using eShop.CoreBusiness.Services;
 using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
 using eShop.StateStore.DI;
+using eShop.UseCases.CustomerPortal.OrderConfirmationScreen;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.UI;
@@ -33,20 +34,25 @@ namespace eShop.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+
             services.AddScoped<IShoppingCart, ShopingCartBase>();
             services.AddScoped<IShoppingCartStateStore, StateStoreShoppingCart>();
 
-            services.AddTransient<IProductRepository, ProductRepository>();
-            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();            
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
+
             services.AddTransient<IAddProductToCartUseCase, AddProductToCartUseCase>();
+
             services.AddTransient<IViewShoppingCartUseCase, ViewShoppingCartUseCase>();
             services.AddTransient<IUpdateQuantityUseCase, UpdateQuantityUseCase>();
             services.AddTransient<IDeleteProductUseCase, DeleteProductUseCase>();
+
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
+            services.AddTransient<IViewOrderConfirmationUseCase, ViewOrderConfirmationUseCase>();
 
         }
 
