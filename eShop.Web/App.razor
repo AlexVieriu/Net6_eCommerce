@@ -1,9 +1,14 @@
 <Router AppAssembly="@typeof(Program).Assembly"
         AdditionalAssemblies="new[] {
-                                  typeof(eShop.Web.CustomerPortal.Pages.SearchProductComp).Assembly
+                                  typeof(eShop.Web.CustomerPortal.Pages.SearchProductComp).Assembly,
+                                  typeof(eShop.Web.AdminPortal.Pages.OutStandingOrdersComp).Assembly
                               }">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            <NotAuthorized>
+                <LoginComp />
+            </NotAuthorized>
+        </AuthorizeRouteView>
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">

@@ -1,1 +1,19 @@
-﻿
+﻿@page "/outstandingorders"
+
+@attribute [Authorize]
+
+@inject IViewOutstandingOrdersUseCase viewOutstandingOrdersUseCase
+
+<h4>Outstanding Orders</h4>
+<br />
+
+<OrderListComp Orders="Orders"/>
+
+@code {
+    private IEnumerable<Order> Orders;
+
+    protected override void OnInitialized()
+    {
+        Orders = viewOutstandingOrdersUseCase.Execute();       
+    }
+}

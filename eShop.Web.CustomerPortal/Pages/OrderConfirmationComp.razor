@@ -37,7 +37,7 @@
         </div>
 
         <div class="col">
-            <OrderSummaryComp Order="order" />
+            <OrderSummaryComp Order="order" isVisible="false" />
         </div>
     </div>
 
@@ -53,21 +53,12 @@
             </tr>
         </thead>
         <tbody>
-            @if (order.LineItems != null && order.LineItems.Count > 0)
-            {
-                @foreach (var item in order.LineItems)
-                {
-                    <tr>
-                        <td>@item.Product.Name</td>
-                        <td>@item.Quantity</td>
-                        <td>@item.Price.ToString("c")</td>
-                    </tr>
-                }
-            }
-            else
+            @foreach (var item in order.LineItems)
             {
                 <tr>
-                    <td>No items to display</td>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("c")</td>
                 </tr>
             }
         </tbody>
@@ -79,7 +70,7 @@ else
 }
 
 
-@code{
+@code {
     private Order order;
 
     [Parameter]
@@ -91,6 +82,7 @@ else
     //    if (string.IsNullOrWhiteSpace(UniqueId))
     //        order = viewOrderConfirmationUseCase.Execute(UniqueId);
     //}
+
 
     // LocalStorage
     protected override void OnAfterRender(bool firstRender)

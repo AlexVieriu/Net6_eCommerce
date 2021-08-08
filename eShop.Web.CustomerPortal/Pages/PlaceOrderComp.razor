@@ -6,7 +6,7 @@
 @inject IPlaceOrderUseCase placeOrderUseCase
 
 
-@if (order != null && order.LineItems != null && order.LineItems.Count > 0)
+@if (order != null)
 {
     <div class="row text-ceter mt-4">
         <div class="col col-lg-8">
@@ -19,12 +19,10 @@
 }
 
 <br />
-<p>@orderPlaced</p>
 
 
 @code{
     private Order order;
-    private string orderPlaced = null;
 
     protected override async void OnAfterRender(bool firstRender)
     {

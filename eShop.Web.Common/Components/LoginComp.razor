@@ -1,0 +1,46 @@
+﻿<h4>Login</h4>
+<br />
+
+@inject NavigationManager navManager
+
+@if (loginViewModel != null)
+{
+    <div class="row position-relative">
+        <EditForm Model="loginViewModel" OnValidSubmit="HandleLogin" class="col-lg-6">
+            <DataAnnotationsValidator />
+            <span class="text-danger">
+                <ValidationSummary />
+            </span>
+
+            <div class="form-group">
+                <label class="h6">User Name</label>
+                <input class="form-control" @bind-value="loginViewModel.UserName" />
+            </div>
+
+            <div class="form-group">
+                <label class="h6">User Name</label>
+                <input class="form-control" @bind-value="loginViewModel.Password" type="password" />
+            </div>
+            <br>
+
+            <input type="submit" value="Login" class="btn-lg btn-outline-primary" />
+
+        </EditForm>
+    </div>
+
+}
+
+
+@code {
+    private LoginViewModel loginViewModel;
+
+    protected override void OnInitialized()
+    {
+        loginViewModel = new();
+    }
+
+    private void HandleLogin()
+    {
+        navManager.NavigateTo($"/login?user={loginViewModel.UserName}&pwd={loginViewModel.Password}", true);
+    }
+}

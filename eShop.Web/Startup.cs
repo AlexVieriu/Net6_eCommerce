@@ -2,6 +2,9 @@ using eShop.CoreBusiness.Services;
 using eShop.DataStore.HardCoded;
 using eShop.ShoppingCart.LocalStorage;
 using eShop.StateStore.DI;
+using eShop.UseCases.AdminPortal.OrderDetailScreen;
+using eShop.UseCases.AdminPortal.OutStandingOrdersScreen;
+using eShop.UseCases.AdminPortal.ProcessedOrdersScreen;
 using eShop.UseCases.CustomerPortal.OrderConfirmationScreen;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
 using eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
@@ -31,8 +34,16 @@ namespace eShop.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddAuthentication("eShop.CookieAuth")
+                    .AddCookie("eShop.CookieAuth", config =>
+                    {
+                        config.Cookie.Name = "eShop.CookieAuth";
+                        config.LoginPath = "/login";
+                    });
 
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
@@ -42,7 +53,7 @@ namespace eShop.Web
 
             services.AddTransient<IOrderService, OrderService>();
 
-            services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();            
+            services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
             services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
 
             services.AddTransient<IAddProductToCartUseCase, AddProductToCartUseCase>();
@@ -54,6 +65,10 @@ namespace eShop.Web
             services.AddTransient<IPlaceOrderUseCase, PlaceOrderUseCase>();
             services.AddTransient<IViewOrderConfirmationUseCase, ViewOrderConfirmationUseCase>();
 
+            services.AddTransient<IViewOutstandingOrdersUseCase, ViewOutstandingOrdersUseCase>();
+            services.AddTransient<IViewProcessedOrdersUseCase, ViewProcessedOrdersUseCase>();
+            services.AddTransient<IViewOrderDetailUseCase, ViewOrderDetailUseCase>();
+            services.AddTransient<IProcessOrderUseCase, ProcessOrderUseCase>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,8 +90,12 @@ namespace eShop.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

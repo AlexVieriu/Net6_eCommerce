@@ -16,12 +16,8 @@ namespace eShop.DataStore.HardCoded
 
         public int CreateOrder(Order order)
         {
-            // create order Id
             order.OrderId = Orders.Count + 1;
-
-            // add order to the dictionary 
             Orders.Add(order.OrderId.Value, order);
-
             return order.OrderId.Value;
         }
 
