@@ -13,11 +13,6 @@ using eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen;
 using eShop.UseCases.CustomerPortal.ShoppingCartScreen;
 using eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces;
 using eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace eShop.Web
 {
