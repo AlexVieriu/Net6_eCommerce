@@ -1,31 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31320.298
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32317.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Web", "eShop.Web\eShop.Web.csproj", "{BE52E864-4A70-4587-BBF4-DA740D6A23C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web", "eShop.Web\eShop.Web.csproj", "{BE52E864-4A70-4587-BBF4-DA740D6A23C8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{15A2B061-2403-4EFE-AF99-BCBAB957AD10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eShop.Models", "eShop.Models", "{EA9E60C8-334D-4636-A4DC-DF501530E9D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Web.CustomerPortal", "eShop.Web.CustomerPortal\eShop.Web.CustomerPortal.csproj", "{702D8505-AFC4-4F60-984A-E807A83D7D3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web.CustomerPortal", "eShop.Web.CustomerPortal\eShop.Web.CustomerPortal.csproj", "{702D8505-AFC4-4F60-984A-E807A83D7D3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Web.AdminPortal", "eShop.Web.AdminPortal\eShop.Web.AdminPortal.csproj", "{BB8363B3-FA2C-4C3C-AA1B-4B76C582D11D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web.AdminPortal", "eShop.Web.AdminPortal\eShop.Web.AdminPortal.csproj", "{BB8363B3-FA2C-4C3C-AA1B-4B76C582D11D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.Web.Common", "eShop.Web.Common\eShop.Web.Common.csproj", "{43CF7DC4-39A4-4893-B990-706F6810E4AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.Web.Common", "eShop.Web.Common\eShop.Web.Common.csproj", "{43CF7DC4-39A4-4893-B990-706F6810E4AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.ShoppingCart.LocalStorage", "eShop.ShoppingCart.LocalStorage\eShop.ShoppingCart.LocalStorage.csproj", "{6C178CB7-7464-411C-B7E5-92E7B49C16B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.ShoppingCart.LocalStorage", "eShop.ShoppingCart.LocalStorage\eShop.ShoppingCart.LocalStorage.csproj", "{6C178CB7-7464-411C-B7E5-92E7B49C16B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.DataStore.HardCoded", "eShop.DataStore.HardCoded\eShop.DataStore.HardCoded.csproj", "{A52CC7E4-16BE-44A9-BB36-1F259A63FC48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.DataStore.HardCoded", "eShop.DataStore.HardCoded\eShop.DataStore.HardCoded.csproj", "{A52CC7E4-16BE-44A9-BB36-1F259A63FC48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.DataStore.SQL.Dapper", "eShop.DataStore.SQL.Dapper\eShop.DataStore.SQL.Dapper.csproj", "{F485C53F-4F70-4C8F-BC71-CFFFDDD5F3FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.DataStore.SQL.Dapper", "eShop.DataStore.SQL.Dapper\eShop.DataStore.SQL.Dapper.csproj", "{F485C53F-4F70-4C8F-BC71-CFFFDDD5F3FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.StateStore.DI", "eShop.StateStore.DI\eShop.StateStore.DI.csproj", "{CF63C7DF-D6C7-40A7-9ACC-C77D1E725403}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.StateStore.DI", "eShop.StateStore.DI\eShop.StateStore.DI.csproj", "{CF63C7DF-D6C7-40A7-9ACC-C77D1E725403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.CoreBusiness", "eShop.CoreBusiness\eShop.CoreBusiness.csproj", "{CA6EC4CC-2B84-401A-B3BD-47C57E9C74CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.CoreBusiness", "eShop.CoreBusiness\eShop.CoreBusiness.csproj", "{CA6EC4CC-2B84-401A-B3BD-47C57E9C74CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShop.UseCases", "eShop.UseCases\eShop.UseCases.csproj", "{ABED2C64-3E38-421D-B2F9-C1F13F34D069}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.UseCases", "eShop.UseCases\eShop.UseCases.csproj", "{ABED2C64-3E38-421D-B2F9-C1F13F34D069}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{651ADE70-6513-44EA-85A1-B1139AE9113B}"
+	ProjectSection(SolutionItems) = preProject
+		Notes\CreatingTheProject.txt = Notes\CreatingTheProject.txt
+		Notes\TypeOfArhitecture.txt = Notes\TypeOfArhitecture.txt
+		Notes\Project Road Map.txt = Notes\Project Road Map.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
