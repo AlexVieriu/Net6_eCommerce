@@ -1,10 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces;
 
-namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces
+public interface IPlaceOrderUseCase
 {
-    public interface IPlaceOrderUseCase
-    {
-        Task<string> ExecuteAsync(Order order);
-    }
+    Task<string> ExecuteAsync(Order order);
 }

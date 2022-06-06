@@ -1,10 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.OrderConfirmationScreen;
 
-namespace eShop.UseCases.CustomerPortal.OrderConfirmationScreen
+public interface IViewOrderConfirmationUseCase
 {
-    public interface IViewOrderConfirmationUseCase
-    {
-        Order Execute(string uniqueId);
-    }
+    Order Execute(string uniqueId);
 }

@@ -30,8 +30,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{651ADE70-6513-44EA-85A1-B1139AE9113B}"
 	ProjectSection(SolutionItems) = preProject
 		Notes\CreatingTheProject.txt = Notes\CreatingTheProject.txt
-		Notes\TypeOfArhitecture.txt = Notes\TypeOfArhitecture.txt
 		Notes\Project Road Map.txt = Notes\Project Road Map.txt
+		Notes\TypeOfArhitecture.txt = Notes\TypeOfArhitecture.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{A7B5C33A-8152-4DAF-B587-1FAE6022ABBF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Global

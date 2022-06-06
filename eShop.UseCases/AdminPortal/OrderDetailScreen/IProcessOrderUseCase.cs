@@ -1,7 +1,6 @@
-﻿namespace eShop.UseCases.AdminPortal.OrderDetailScreen
+﻿namespace eShop.UseCases.AdminPortal.OrderDetailScreen;
+
+public interface IProcessOrderUseCase
 {
-    public interface IProcessOrderUseCase
-    {
-        bool Execute(int orderId, string adminUserName);
-    }
+    bool Execute(int orderId, string adminUserName);
 }

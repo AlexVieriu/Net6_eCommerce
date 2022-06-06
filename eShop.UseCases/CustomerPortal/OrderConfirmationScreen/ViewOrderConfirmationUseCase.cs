@@ -1,20 +1,16 @@
-﻿using eShop.CoreBusiness.Models;
-using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
+﻿namespace eShop.UseCases.CustomerPortal.OrderConfirmationScreen;
 
-namespace eShop.UseCases.CustomerPortal.OrderConfirmationScreen
+public class ViewOrderConfirmationUseCase : IViewOrderConfirmationUseCase
 {
-    public class ViewOrderConfirmationUseCase : IViewOrderConfirmationUseCase
+    private readonly IOrderRepository _orderRepository;
+
+    public ViewOrderConfirmationUseCase(IOrderRepository orderRepository)
     {
-        private readonly IOrderRepository _orderRepository;
+        _orderRepository = orderRepository;
+    }
 
-        public ViewOrderConfirmationUseCase(IOrderRepository orderRepository)
-        {
-            _orderRepository = orderRepository;
-        }
-
-        public Order Execute(string uniqueId)
-        {
-            return _orderRepository.GetOrderByUniqueId(uniqueId);
-        }
+    public Order Execute(string uniqueId)
+    {
+        return _orderRepository.GetOrderByUniqueId(uniqueId);
     }
 }

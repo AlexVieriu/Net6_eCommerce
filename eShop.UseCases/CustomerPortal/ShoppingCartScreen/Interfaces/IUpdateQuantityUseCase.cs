@@ -1,10 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces;
 
-namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces
+public interface IUpdateQuantityUseCase
 {
-    public interface IUpdateQuantityUseCase
-    {
-        Task<Order> ExecuteAsync(int productId, int qty);
-    }
+    Task<Order> ExecuteAsync(int productId, int qty);
 }

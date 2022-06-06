@@ -1,22 +1,18 @@
-﻿using eShop.CoreBusiness.Models;
-using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
+﻿namespace eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen;
 
-namespace eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen
+public class ViewProductUseCase : IViewProductUseCase
 {
-    public class ViewProductUseCase : IViewProductUseCase
+    private readonly IProductRepository _productRepository;
+
+    public ViewProductUseCase(IProductRepository productRepository)
     {
-        private readonly IProductRepository _productRepository;
+        _productRepository = productRepository;
+    }
 
-        public ViewProductUseCase(IProductRepository productRepository)
-        {
-            _productRepository = productRepository;
-        }
+    public Product Execute(int productId)
+    {
+        var product= _productRepository.GetProduct(productId);
 
-        public Product Execute(int productId)
-        {
-            var product= _productRepository.GetProduct(productId);
-
-            return product;
-        }
+        return product;
     }
 }

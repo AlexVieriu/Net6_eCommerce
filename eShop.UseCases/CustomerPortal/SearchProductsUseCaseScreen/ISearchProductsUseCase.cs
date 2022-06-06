@@ -1,10 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Collections.Generic;
+﻿namespace eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen;
 
-namespace eShop.UseCases.CustomerPortal.SearchProductsUseCaseScreen
+public interface ISearchProductsUseCase
 {
-    public interface ISearchProductsUseCase
-    {
-        List<Product> Execute(string filter = null);
-    }
+    List<Product> Execute(string filter = null);
 }

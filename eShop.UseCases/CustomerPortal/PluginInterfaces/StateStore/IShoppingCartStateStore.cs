@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore;
 
-namespace eShop.UseCases.CustomerPortal.PluginInterfaces.StateStore
+public interface IShoppingCartStateStore : IStateStore
 {
-    public interface IShoppingCartStateStore : IStateStore
-    {
-        Task<int> GetItemsCount();
-    }
+    Task<int> GetItemsCount();
 }

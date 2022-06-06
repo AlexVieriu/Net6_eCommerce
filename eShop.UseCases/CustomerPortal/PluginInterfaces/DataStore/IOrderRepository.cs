@@ -1,30 +1,25 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
 
-namespace eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore
+public interface IOrderRepository
 {
-    public interface IOrderRepository
-    {
-        // CreateOrder - return uniquedId
-        int CreateOrder(Order order);
+    // CreateOrder - return uniquedId
+    int CreateOrder(Order order);
 
-        // GetOrder() - return Order
-        Order GetOrder(int orderId);
+    // GetOrder() - return Order
+    Order GetOrder(int orderId);
 
-        // GetOrderByUniqueId() - return order
-        Order GetOrderByUniqueId(string uniqueId);
+    // GetOrderByUniqueId() - return order
+    Order GetOrderByUniqueId(string uniqueId);
 
-        // GetOrders()  - return orders
-        IEnumerable<Order> GetOrders();
+    // GetOrders()  - return orders
+    IEnumerable<Order> GetOrders();
 
-        // GetOutstandingsOrders() - return orders (dataProcessed = false)
-        IEnumerable<Order> GetOutstandingsOrders();
+    // GetOutstandingsOrders() - return orders (dataProcessed = false)
+    IEnumerable<Order> GetOutstandingsOrders();
 
-        // GetProcessedOrders() - return orders (dataProcessed = true)
-        IEnumerable<Order> GetProcessedOrders();
+    // GetProcessedOrders() - return orders (dataProcessed = true)
+    IEnumerable<Order> GetProcessedOrders();
 
-        // UpdateOrder() - void 
-        void UpdateOrder(Order order);
-    }
+    // UpdateOrder() - void 
+    void UpdateOrder(Order order);
 }

@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eShop.Web.Common.ViewModel
+namespace eShop.Web.Common.ViewModel;
+
+public class LoginViewModel
 {
-    public class LoginViewModel
-    {
-        [Required]
-        public string UserName { get; set; }
-        [Required]
-        public string Password { get; set; }
-    }
+    [Required]
+    public string UserName { get; set; }
+    [Required]
+    public string Password { get; set; }
 }

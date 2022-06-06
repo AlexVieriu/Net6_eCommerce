@@ -1,22 +1,18 @@
-﻿using eShop.CoreBusiness.Models;
-using eShop.UseCases.CustomerPortal.PluginInterfaces.DataStore;
+﻿namespace eShop.UseCases.AdminPortal.OrderDetailScreen;
 
-namespace eShop.UseCases.AdminPortal.OrderDetailScreen
+public class ViewOrderDetailUseCase : IViewOrderDetailUseCase
 {
-    public class ViewOrderDetailUseCase : IViewOrderDetailUseCase
+    private readonly IOrderRepository _orderRepository;
+
+    public ViewOrderDetailUseCase(IOrderRepository orderRepository)
     {
-        private readonly IOrderRepository _orderRepository;
+        _orderRepository = orderRepository;
+    }
 
-        public ViewOrderDetailUseCase(IOrderRepository orderRepository)
-        {
-            _orderRepository = orderRepository;
-        }
+    public Order Execute(int orderId)
+    {
+        var order = _orderRepository.GetOrder(orderId);
 
-        public Order Execute(int orderId)
-        {
-            var order = _orderRepository.GetOrder(orderId);
-
-            return order;
-        }
+        return order;
     }
 }

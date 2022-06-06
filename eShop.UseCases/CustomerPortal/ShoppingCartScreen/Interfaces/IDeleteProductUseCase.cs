@@ -1,10 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
-using System.Threading.Tasks;
+﻿namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces;
 
-namespace eShop.UseCases.CustomerPortal.ShoppingCartScreen.Interfaces
+public interface IDeleteProductUseCase
 {
-    public interface IDeleteProductUseCase
-    {
-        Task<Order> ExecuteAsync(int productId);
-    }
+    Task<Order> ExecuteAsync(int productId);
 }

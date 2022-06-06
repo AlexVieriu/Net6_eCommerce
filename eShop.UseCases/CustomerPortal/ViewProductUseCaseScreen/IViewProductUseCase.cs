@@ -1,9 +1,6 @@
-﻿using eShop.CoreBusiness.Models;
+﻿namespace eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen;
 
-namespace eShop.UseCases.CustomerPortal.ViewProductUseCaseScreen
+public interface IViewProductUseCase
 {
-    public interface IViewProductUseCase
-    {
-        Product Execute(int productId);
-    }
+    Product Execute(int productId);
 }
